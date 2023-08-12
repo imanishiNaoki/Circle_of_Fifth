@@ -76,6 +76,7 @@ main {
     Circle
 --------------------------------------*/
 .circle {
+  overflow: hidden;
   &_wrap {
     margin-top: 40px;
     border: 1px solid $_m;

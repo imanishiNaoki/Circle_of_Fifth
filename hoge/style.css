@@ -52,6 +52,7 @@ main {
     Circle
 --------------------------------------*/
 .circle {
+  overflow: hidden;
   width: calc(100vw - 72px);
   padding-top: 100%;
   border-radius: 50%/50%;
