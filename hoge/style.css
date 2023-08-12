@@ -219,37 +219,92 @@ main {
   }
 }
 .circle.plus1 {
-  transform: rotate(-30deg) scale(0.8);
+  transform: rotate(-30deg);
+}
+@media screen and (min-width: 1025px) {
+  .circle.plus1 {
+    transform: rotate(-30deg) scale(0.8);
+  }
 }
 .circle.plus2 {
-  transform: rotate(-60deg) scale(0.8);
+  transform: rotate(-60deg);
+}
+@media screen and (min-width: 1025px) {
+  .circle.plus2 {
+    transform: rotate(-60deg) scale(0.8);
+  }
 }
 .circle.plus3 {
-  transform: rotate(-90deg) scale(0.8);
+  transform: rotate(-90deg);
+}
+@media screen and (min-width: 1025px) {
+  .circle.plus3 {
+    transform: rotate(-90deg) scale(0.8);
+  }
 }
 .circle.plus4 {
-  transform: rotate(-120deg) scale(0.8);
+  transform: rotate(-120deg);
+}
+@media screen and (min-width: 1025px) {
+  .circle.plus4 {
+    transform: rotate(-120deg) scale(0.8);
+  }
 }
 .circle.plus5 {
-  transform: rotate(-150deg) scale(0.8);
+  transform: rotate(-150deg);
+}
+@media screen and (min-width: 1025px) {
+  .circle.plus5 {
+    transform: rotate(-150deg) scale(0.8);
+  }
 }
 .circle.plus6 {
-  transform: rotate(180deg) scale(0.8);
+  transform: rotate(180deg);
+}
+@media screen and (min-width: 1025px) {
+  .circle.plus6 {
+    transform: rotate(180deg) scale(0.8);
+  }
 }
 .circle.plus7 {
-  transform: rotate(150deg) scale(0.8);
+  transform: rotate(150deg);
+}
+@media screen and (min-width: 1025px) {
+  .circle.plus7 {
+    transform: rotate(150deg) scale(0.8);
+  }
 }
 .circle.plus8 {
-  transform: rotate(120deg) scale(0.8);
+  transform: rotate(120deg);
+}
+@media screen and (min-width: 1025px) {
+  .circle.plus8 {
+    transform: rotate(120deg) scale(0.8);
+  }
 }
 .circle.plus9 {
-  transform: rotate(90deg) scale(0.8);
+  transform: rotate(90deg);
+}
+@media screen and (min-width: 1025px) {
+  .circle.plus9 {
+    transform: rotate(90deg) scale(0.8);
+  }
 }
 .circle.plus10 {
-  transform: rotate(60deg) scale(0.8);
+  transform: rotate(60deg);
+}
+@media screen and (min-width: 1025px) {
+  .circle.plus10 {
+    transform: rotate(60deg) scale(0.8);
+  }
 }
 .circle.plus11 {
-  transform: rotate(30deg) scale(0.8);
+  transform: rotate(30deg);
+}
+@media screen and (min-width: 1025px) {
+  .circle.plus11 {
+    transform: rotate(30deg) scale(0.8);
+  }
 }
 
 [data-position] {

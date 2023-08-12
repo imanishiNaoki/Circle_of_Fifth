@@ -229,37 +229,70 @@ main {
     }
   }
   &.plus1 {
-    transform: rotate(-30deg) scale(0.8);
+    transform: rotate(-30deg);
+    @include mq(lg) {
+      transform: rotate(-30deg) scale(0.8);
+    }
   }
   &.plus2 {
-    transform: rotate(-60deg) scale(0.8);
+    transform: rotate(-60deg);
+    @include mq(lg) {
+      transform: rotate(-60deg) scale(0.8);
+    }
   }
   &.plus3 {
-    transform: rotate(-90deg) scale(0.8);
+    transform: rotate(-90deg);
+    @include mq(lg) {
+      transform: rotate(-90deg) scale(0.8);
+    }
   }
   &.plus4 {
-    transform: rotate(-120deg) scale(0.8);
+    transform: rotate(-120deg);
+    @include mq(lg) {
+      transform: rotate(-120deg) scale(0.8);
+    }
   }
   &.plus5 {
-    transform: rotate(-150deg) scale(0.8);
+    transform: rotate(-150deg);
+    @include mq(lg) {
+      transform: rotate(-150deg) scale(0.8);
+    }
   }
   &.plus6 {
-    transform: rotate(180deg) scale(0.8);
+    transform: rotate(180deg);
+    @include mq(lg) {
+      transform: rotate(180deg) scale(0.8);
+    }
   }
   &.plus7 {
-    transform: rotate(150deg) scale(0.8);
+    transform: rotate(150deg);
+    @include mq(lg) {
+      transform: rotate(150deg) scale(0.8);
+    }
   }
   &.plus8 {
-    transform: rotate(120deg) scale(0.8);
+    transform: rotate(120deg);
+    @include mq(lg) {
+      transform: rotate(120deg) scale(0.8);
+    }
   }
   &.plus9 {
-    transform: rotate(90deg) scale(0.8);
+    transform: rotate(90deg);
+    @include mq(lg) {
+      transform: rotate(90deg) scale(0.8);
+    }
   }
   &.plus10 {
-    transform: rotate(60deg) scale(0.8);
+    transform: rotate(60deg);
+    @include mq(lg) {
+      transform: rotate(60deg) scale(0.8);
+    }
   }
   &.plus11 {
-    transform: rotate(30deg) scale(0.8);
+    transform: rotate(30deg);
+    @include mq(lg) {
+      transform: rotate(30deg) scale(0.8);
+    }
   }
 }
 [data-position] {
