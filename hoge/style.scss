@@ -1,0 +1,1084 @@
+/*-------------------------------------
+    color
+--------------------------------------*/
+
+$_m: #393939;
+$_s: #c9c9c9;
+$_p: #ffe5ae;
+$_w: #fff;
+$_b: #000;
+
+$major: #ffeeee;
+$minor: #f2feff;
+
+$tonic: #adffaa;
+$dominant: #ff9d96;
+$sdominant: #f3ff96;
+
+/*-------------------------------------
+    function
+--------------------------------------*/
+$baseFontSize: 16;
+@function rem($pixels) {
+  @return $pixels / $baseFontSize * 1rem;
+}
+
+$breakpoints: (
+  'sm': 'screen and (min-width: 640px)',
+  'md': 'screen and (min-width: 769px)',
+  'lg': 'screen and (min-width: 1025px)',
+  'xl': 'screen and (min-width: 1281px)',
+) !default;
+@mixin mq($breakpoint: md) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+/*-------------------------------------
+    general
+--------------------------------------*/
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  color: #2e2e2e;
+}
+p,
+a {
+  line-height: 1.7;
+  letter-spacing: 1px;
+}
+main {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  @include mq(lg) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+/*-------------------------------------
+    container
+--------------------------------------*/
+.container {
+  margin: 0 20px;
+}
+
+.middle {
+  @include mq(lg) {
+    width: 50%;
+  }
+}
+/*-------------------------------------
+    Circle
+--------------------------------------*/
+.circle {
+  &_wrap {
+    margin-top: 40px;
+    border: 1px solid $_m;
+    border-radius: 8px/8px;
+    padding: 0 16px 16px 16px;
+  }
+  &_title {
+    margin-bottom: 10px;
+    font-weight: bold;
+    margin-top: -10px;
+    margin-left: -6px;
+    @include mq(lg) {
+      margin-top: -30px;
+    }
+    span {
+      background-color: #fff;
+      position: relative;
+      z-index: 1001;
+      display: inline-block;
+      padding: 0 10px;
+      font-size: 22px;
+      @include mq(lg) {
+        font-size: 40px;
+      }
+    }
+  }
+  width: calc(100vw - 72px);
+  @include mq(lg) {
+    width: calc(50vw - 52px);
+  }
+  padding-top: 100%;
+  border-radius: 50%/ 50%;
+  border: 1px solid $_s;
+  position: relative;
+  z-index: 1000;
+  overflow: hidden;
+  background-color: $major;
+  transition: transform 0.5s ease-in-out;
+  &_1 {
+    width: calc(70vw - 50px);
+    @include mq(lg) {
+      width: calc(36vw - 47px);
+    }
+    padding-top: 70%;
+    border-radius: 50%/ 50%;
+    border: 1px solid $_s;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1001;
+    background-color: $minor;
+  }
+  &_2 {
+    width: calc(30vw - 20px);
+    @include mq(lg) {
+      width: calc(18vw - 47px);
+    }
+    padding-top: 30%;
+    border-radius: 50%/ 50%;
+    border: 1px solid $_s;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1003;
+    background-color: $_w;
+  }
+  &_divide_1 {
+    display: block;
+    width: 100vw;
+    height: 1px;
+    border-top: 1px solid $_s;
+    box-sizing: border-box;
+    transform: translate(-50%, -50%) rotate(105deg);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1002;
+  }
+  &_divide_2 {
+    display: block;
+    width: 100vw;
+    height: 1px;
+    border-top: 1px solid $_s;
+    box-sizing: border-box;
+    transform: translate(-50%, -50%) rotate(135deg);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1002;
+  }
+  &_divide_3 {
+    display: block;
+    width: 100vw;
+    height: 1px;
+    border-top: 1px solid $_s;
+    box-sizing: border-box;
+    transform: translate(-50%, -50%) rotate(165deg);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1002;
+  }
+  &_divide_4 {
+    display: block;
+    width: 100vw;
+    height: 1px;
+    border-top: 1px solid $_s;
+    box-sizing: border-box;
+    transform: translate(-50%, -50%) rotate(195deg);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1002;
+  }
+  &_divide_5 {
+    display: block;
+    width: 100vw;
+    height: 1px;
+    border-top: 1px solid $_s;
+    box-sizing: border-box;
+    transform: translate(-50%, -50%) rotate(225deg);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1002;
+  }
+
+  &_divide_6 {
+    display: block;
+    width: 100vw;
+    height: 1px;
+    border-top: 1px solid $_s;
+    box-sizing: border-box;
+    transform: translate(-50%, -50%) rotate(255deg);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1002;
+  }
+  &.plus0 {
+    transform: rotate(0deg);
+  }
+  &.plus1 {
+    transform: rotate(-30deg);
+  }
+  &.plus2 {
+    transform: rotate(-60deg);
+  }
+  &.plus3 {
+    transform: rotate(-90deg);
+  }
+  &.plus4 {
+    transform: rotate(-120deg);
+  }
+  &.plus5 {
+    transform: rotate(-150deg);
+  }
+  &.plus6 {
+    transform: rotate(180deg);
+  }
+  &.plus7 {
+    transform: rotate(150deg);
+  }
+  &.plus8 {
+    transform: rotate(120deg);
+  }
+  &.plus9 {
+    transform: rotate(90deg);
+  }
+  &.plus10 {
+    transform: rotate(60deg);
+  }
+  &.plus11 {
+    transform: rotate(30deg);
+  }
+}
+[data-position] {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 1005;
+  font-size: 11px;
+  @include mq(sm) {
+    font-size: 16px;
+    width: 60px;
+    height: 60px;
+  }
+  @include mq(md) {
+    font-size: 18px;
+    width: 80px;
+    height: 80px;
+  }
+  @include mq(lg) {
+    font-size: 16px;
+    width: 60px;
+    height: 60px;
+  }
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: pre-wrap;
+  line-height: 1.3;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%/50%;
+  box-shadow: 1px 1px 3px #9b9b9b;
+  transition: all 0.5s ease-in-out;
+  background-color: $_w;
+  &.tonic {
+    background-color: $tonic;
+  }
+  &.dominant {
+    background-color: $dominant;
+  }
+  &.sdominant {
+    background-color: $sdominant;
+  }
+  &.plus0 {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  &.plus1 {
+    transform: translate(-50%, -50%) rotate(30deg);
+  }
+  &.plus2 {
+    transform: translate(-50%, -50%) rotate(60deg);
+  }
+  &.plus3 {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+  &.plus4 {
+    transform: translate(-50%, -50%) rotate(120deg);
+  }
+  &.plus5 {
+    transform: translate(-50%, -50%) rotate(150deg);
+  }
+  &.plus6 {
+    transform: translate(-50%, -50%) rotate(-180deg);
+  }
+  &.plus7 {
+    transform: translate(-50%, -50%) rotate(-150deg);
+  }
+  &.plus8 {
+    transform: translate(-50%, -50%) rotate(-120deg);
+  }
+  &.plus9 {
+    transform: translate(-50%, -50%) rotate(-90deg);
+  }
+  &.plus10 {
+    transform: translate(-50%, -50%) rotate(-60deg);
+  }
+  &.plus11 {
+    transform: translate(-50%, -50%) rotate(-30deg);
+  }
+}
+/*---------------------------------
+  1層目
+---------------------------------*/
+[data-round='1'] {
+  &[data-position='1'] {
+    top: 7.5%;
+    left: 50%;
+  }
+  &[data-position='2'] {
+    top: 13.5%;
+    left: 71%;
+  }
+  &[data-position='3'] {
+    top: 29%;
+    left: 87%;
+  }
+  &[data-position='4'] {
+    top: 50%;
+    left: 92.5%;
+  }
+  &[data-position='5'] {
+    top: 71%;
+    left: 86.5%;
+  }
+  &[data-position='6'] {
+    top: 87%;
+    left: 71.5%;
+  }
+  &[data-position='7'] {
+    top: 92.5%;
+    left: 50%;
+  }
+  &[data-position='8'] {
+    top: 87%;
+    left: 29.5%;
+  }
+  &[data-position='9'] {
+    top: 71%;
+    left: 13.5%;
+  }
+  &[data-position='10'] {
+    top: 50%;
+    left: 7.5%;
+  }
+  &[data-position='11'] {
+    top: 29%;
+    left: 13.5%;
+  }
+  &[data-position='12'] {
+    top: 13.5%;
+    left: 29%;
+  }
+}
+
+/*---------------------------------
+  2層目
+---------------------------------*/
+[data-round='2'] {
+  &[data-position='1'] {
+    top: 25%;
+    left: 50%;
+  }
+  &[data-position='2'] {
+    top: 28%;
+    left: 63%;
+  }
+  &[data-position='3'] {
+    top: 37.5%;
+    left: 72%;
+  }
+  &[data-position='4'] {
+    top: 50%;
+    left: 75%;
+  }
+  &[data-position='5'] {
+    top: 62.5%;
+    left: 72%;
+  }
+  &[data-position='6'] {
+    top: 72%;
+    left: 63%;
+  }
+  &[data-position='7'] {
+    top: 75%;
+    left: 50%;
+  }
+  &[data-position='8'] {
+    top: 72%;
+    left: 37%;
+  }
+  &[data-position='9'] {
+    top: 62.5%;
+    left: 28%;
+  }
+  &[data-position='10'] {
+    top: 50%;
+    left: 25%;
+  }
+  &[data-position='11'] {
+    top: 37.5%;
+    left: 28%;
+  }
+  &[data-position='12'] {
+    top: 28%;
+    left: 37%;
+  }
+}
+/*---------------------------------
+  3層目
+---------------------------------*/
+
+[data-round='3'] {
+  &[data-position] {
+    z-index: 1003;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+    visibility: hidden;
+  }
+  &.is-active[data-position] {
+    top: 50%;
+    left: 50%;
+    pointer-events: none;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.circle_cadence {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 1005;
+  @include mq(sm) {
+    width: 70px;
+    height: 70px;
+  }
+  @include mq(md) {
+    width: 90px;
+    height: 90px;
+  }
+  @include mq(lg) {
+    width: 104px;
+    height: 104px;
+  }
+  cursor: pointer;
+  width: 55px;
+  height: 55px;
+  opacity: 0;
+  box-shadow: 1px 1px 3px #9b9b9b;
+  transition: all 0.5s ease-in-out;
+
+  &.note1 {
+    top: 7.5%;
+    left: 50%;
+  }
+  &.note2 {
+    top: 28%;
+    left: 37%;
+  }
+  &.note3 {
+    top: 28%;
+    left: 63%;
+  }
+  &.note4 {
+    top: 13.5%;
+    left: 29%;
+  }
+  &.note5 {
+    top: 13.5%;
+    left: 71%;
+  }
+  &.note6 {
+    top: 25%;
+    left: 50%;
+  }
+  &.note7 {
+    top: 50%;
+    left: 50%;
+  }
+}
+.circle_cadence_area {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100vw - 72px);
+  @include mq(lg) {
+    width: calc(50vw - 52px);
+  }
+  padding-top: 100%;
+  z-index: 1010;
+  pointer-events: none;
+  &.plus0 {
+    transform: rotate(0deg);
+  }
+  &.plus1 {
+    transform: rotate(30deg);
+  }
+  &.plus2 {
+    transform: rotate(60deg);
+  }
+  &.plus3 {
+    transform: rotate(90deg);
+  }
+  &.plus4 {
+    transform: rotate(120deg);
+  }
+  &.plus5 {
+    transform: rotate(150deg);
+  }
+  &.plus6 {
+    transform: rotate(180deg);
+  }
+  &.plus7 {
+    transform: rotate(210deg);
+  }
+  &.plus8 {
+    transform: rotate(240deg);
+  }
+  &.plus9 {
+    transform: rotate(270deg);
+  }
+  &.plus10 {
+    transform: rotate(300deg);
+  }
+  &.plus11 {
+    transform: rotate(330deg);
+  }
+
+  &.majar {
+    .circle_cadence {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      opacity: 0.3;
+      @include mq(sm) {
+        width: 70px;
+        height: 70px;
+      }
+      @include mq(md) {
+        width: 90px;
+        height: 90px;
+      }
+      @include mq(lg) {
+        width: 70px;
+        height: 70px;
+      }
+      cursor: pointer;
+      width: 55px;
+      height: 55px;
+      box-shadow: 1px 1px 3px #9b9b9b;
+      transition: all 0.5s ease-in-out;
+      &.note1 {
+        top: 7.5%;
+        left: 50%;
+        background-color: $tonic;
+      }
+      &.note2 {
+        top: 28%;
+        left: 37%;
+        background-color: $sdominant;
+      }
+      &.note3 {
+        top: 28%;
+        left: 63%;
+        background-color: $tonic;
+      }
+      &.note4 {
+        top: 13.5%;
+        left: 29%;
+        background-color: $sdominant;
+      }
+      &.note5 {
+        top: 13.5%;
+        left: 70.8%;
+        background-color: $dominant;
+      }
+      &.note6 {
+        top: 25%;
+        left: 50%;
+        background-color: $tonic;
+      }
+      &.note7 {
+        top: 50%;
+        left: 50%;
+        background-color: $dominant;
+      }
+    }
+  }
+
+  &.minor {
+    .circle_cadence {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      opacity: 0.3;
+      @include mq(sm) {
+        width: 70px;
+        height: 70px;
+      }
+      @include mq(md) {
+        width: 90px;
+        height: 90px;
+      }
+      @include mq(lg) {
+        width: 70px;
+        height: 70px;
+      }
+      cursor: pointer;
+      width: 55px;
+      height: 55px;
+      box-shadow: 1px 1px 3px #9b9b9b;
+      transition: all 0.5s ease-in-out;
+      &.note1 {
+        top: 7.5%;
+        left: 50%;
+        background-color: $tonic;
+      }
+      &.note2 {
+        top: 28%;
+        left: 37%;
+        background-color: $sdominant;
+      }
+      &.note3 {
+        top: 28%;
+        left: 63%;
+        background-color: $dominant;
+      }
+      &.note4 {
+        top: 13.5%;
+        left: 29%;
+        background-color: $sdominant;
+      }
+      &.note5 {
+        top: 13.5%;
+        left: 70.8%;
+        background-color: $dominant;
+      }
+      &.note6 {
+        top: 25%;
+        left: 50%;
+        background-color: $tonic;
+      }
+      &.note7 {
+        top: 50%;
+        left: 50%;
+        background-color: $sdominant;
+      }
+    }
+  }
+}
+.bold {
+  font-size: 20px;
+  font-weight: bold;
+}
+.key {
+  &_name {
+    margin-bottom: 40px;
+  }
+  &_cadence_area {
+    display: flex;
+  }
+  &_title {
+    margin-bottom: 20px;
+  }
+  &_cadence {
+    width: calc(100% / 7);
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &_diatonic {
+    display: flex;
+    flex-wrap: wrap;
+    &_code {
+      width: calc(100% / 7);
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &_composition {
+      width: 100%;
+      display: block;
+    }
+  }
+}
+.top {
+  padding-top: 60px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  @include mq(lg) {
+    width: 48%;
+    padding-top: 40px;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .guide {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid $_m;
+    border-radius: 8px/8px;
+    padding: 0 16px 16px 16px;
+    width: 55%;
+    @include mq(lg) {
+      width: 100%;
+      flex-grow: 1;
+    }
+    &_title {
+      margin-bottom: 10px;
+      font-weight: bold;
+      margin-top: -20px;
+      margin-left: -6px;
+      @include mq(lg) {
+        margin-top: -30px;
+      }
+      span {
+        background-color: #fff;
+        position: relative;
+        z-index: 1001;
+        display: inline-block;
+        padding: 0 10px;
+        font-size: 22px;
+        @include mq(lg) {
+          font-size: 40px;
+        }
+      }
+    }
+    &_tonic {
+      margin-left: 20px;
+      position: relative;
+      font-size: 14px;
+      @include mq(sm) {
+        font-size: 22px;
+      }
+      &::before {
+        position: absolute;
+        content: '';
+        top: 50%;
+        left: -18px;
+        width: 14px;
+        height: 14px;
+        background-color: $tonic;
+        opacity: 1;
+
+        transform: translateY(-50%);
+      }
+    }
+    &_sdominant {
+      margin-left: 20px;
+      position: relative;
+      font-size: 14px;
+      @include mq(sm) {
+        font-size: 22px;
+      }
+      &::before {
+        position: absolute;
+        content: '';
+        top: 50%;
+        left: -18px;
+        width: 14px;
+        height: 14px;
+        background-color: $sdominant;
+        opacity: 1;
+
+        transform: translateY(-50%);
+      }
+    }
+    &_dominant {
+      margin-left: 20px;
+      position: relative;
+      font-size: 14px;
+      @include mq(sm) {
+        font-size: 22px;
+      }
+      &::before {
+        position: absolute;
+        content: '';
+        top: 50%;
+        left: -18px;
+        width: 14px;
+        height: 14px;
+        background-color: $dominant;
+        opacity: 1;
+
+        transform: translateY(-50%);
+      }
+    }
+  }
+  .focus {
+    width: 40%;
+    @include mq(lg) {
+      margin-bottom: 40px;
+      width: 100%;
+      flex-grow: 1;
+    }
+    border: 1px solid $_m;
+    border-radius: 8px/8px;
+    padding: 0 16px 16px 16px;
+    &_title {
+      font-weight: bold;
+      margin-top: -20px;
+      margin-left: -6px;
+      margin-bottom: -10px;
+      @include mq(lg) {
+        margin-top: -30px;
+      }
+      span {
+        background-color: #fff;
+        position: relative;
+        z-index: 1001;
+        display: inline-block;
+        padding: 0 10px;
+        font-size: 22px;
+        @include mq(lg) {
+          font-size: 40px;
+        }
+      }
+    }
+    &_key {
+      font-size: 50px;
+      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+  }
+}
+.tool {
+  position: relative;
+  padding-right: 28px;
+  display: inline-block;
+  cursor: pointer;
+  &::after {
+    content: '?';
+    position: absolute;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    right: 6px;
+    width: 17px;
+    height: 17px;
+    font-size: 10px;
+    font-weight: bold;
+    box-sizing: border-box;
+    background-color: $_w;
+    border: 1px solid $_m;
+    border-radius: 50%/50%;
+  }
+  &_content {
+    position: fixed;
+    display: block;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    background-color: $_w;
+    z-index: 1009;
+    padding: 30px 20px;
+    width: 80vw;
+    word-break: break-all;
+    -webkit-animation-name: fade;
+    animation-name: fade;
+    -webkit-animation-duration: 0.2s;
+    animation-duration: 0.2s;
+  }
+  &_title {
+    margin-bottom: 10px;
+    border-left: 3px solid $_m;
+    font-size: 20px;
+    font-weight: bold;
+    padding-left: 6px;
+  }
+  &_text {
+    margin-bottom: 0;
+  }
+  &_detail {
+    text-align: right;
+    border-top: 1px solid $_m;
+    padding-top: 10px;
+    position: relative;
+    margin-top: 20px;
+    z-index: 1090;
+    a {
+      text-decoration: underline;
+      color: #0c25ff;
+    }
+  }
+  &_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba($color: $_m, $alpha: 0.3);
+    z-index: 1008;
+    cursor: pointer;
+    -webkit-animation-name: fade;
+    animation-name: fade;
+    -webkit-animation-duration: 0.2s;
+    animation-duration: 0.2s;
+  }
+}
+@-webkit-keyframes fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+.bottom {
+  margin-top: 40px;
+  @include mq(lg) {
+    width: 100%;
+  }
+  .diatonic {
+    border: 1px solid $_m;
+    border-radius: 8px/8px;
+    padding: 0 16px 16px 16px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    &_title {
+      font-weight: bold;
+      margin-top: -20px;
+      margin-left: -6px;
+      margin-bottom: -10px;
+      width: 100%;
+      @include mq(lg) {
+        margin-top: -30px;
+      }
+      span {
+        background-color: #fff;
+        position: relative;
+        z-index: 1001;
+        display: inline-block;
+        padding: 0 10px;
+        font-size: 22px;
+        @include mq(lg) {
+          font-size: 40px;
+        }
+      }
+    }
+    &_content {
+      display: flex;
+      width: 100%;
+    }
+
+    &_chord_name {
+      flex-grow: 1;
+      font-size: 11px;
+      font-weight: bold;
+      @include mq(lg) {
+        font-size: 22px;
+      }
+    }
+    &_attr {
+      padding: 10px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid $_m;
+      box-sizing: border-box;
+      margin: -1px 0 0 -1px;
+      background-color: $_w;
+      &.dominant {
+        background-color: $dominant;
+      }
+      &.tonic {
+        background-color: $tonic;
+      }
+      &.sdominant {
+        background-color: $sdominant;
+      }
+    }
+
+    &_chord {
+      padding: 10px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid $_m;
+      box-sizing: border-box;
+      margin: -1px 0 0 -1px;
+      background-color: $_w;
+    }
+    &_area {
+      margin-top: 30px;
+    }
+    &_sub {
+      margin-bottom: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      border-left: 3px solid $_m;
+      padding-left: 6px;
+      @include mq(lg) {
+        font-size: 28px;
+        border-left: 3px solid $_m;
+      }
+    }
+  }
+}
+.footer {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 16px;
+  padding: 20px 0;
+  color: $_w;
+  background-color: $_m;
+}
+.header {
+  padding: 0 20px;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $_m;
+  color: $_w;
+  h1 {
+    font-size: 26px;
+    font-weight: bold;
+  }
+  .menu {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    span {
+      display: inline-block;
+      width: 30px;
+      height: 2px;
+      margin: 4px 0;
+      background-color: $_w;
+    }
+  }
+}

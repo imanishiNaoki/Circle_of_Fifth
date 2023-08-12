@@ -1,10 +1,6 @@
 import Circle from './Circle';
 
 function App() {
-  return (
-    <main className="main" id="main">
-      <Circle />
-    </main>
-  );
+  return <Circle />;
 }
 export default App;
