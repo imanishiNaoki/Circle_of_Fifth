@@ -68,6 +68,7 @@ main {
 }
 
 .middle {
+  overflow: hidden;
   @include mq(lg) {
     width: 50%;
   }
@@ -76,7 +77,6 @@ main {
     Circle
 --------------------------------------*/
 .circle {
-  overflow: hidden;
   @include mq(lg) {
     transform: scale(0.8);
     margin: -100px 0 -60px 0;
@@ -90,7 +90,7 @@ main {
   &_title {
     margin-bottom: 10px;
     font-weight: bold;
-    margin-top: -10px;
+    margin-top: -20px;
     margin-left: -6px;
     @include mq(lg) {
       margin-top: -30px;
