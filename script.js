@@ -1,5 +1,10 @@
 'use strct';
-
+const home = () => {
+  const homeElement =
+    '<div class="top"><div class="focus"><p class="focus_title"><span>Key</span></p><div class="focus_key" id="js-focus">-</div></div><div class="guide"><p class="guide_title"><span>コードの機能</span></p><p class="guide_tonic"><span class="tool" data-tool="1">トニック</span></p><p class="guide_dominant"><span class="tool" data-tool="2">ドミナント</span></p><p class="guide_sdominant"><span class="tool" data-tool="3">サブドミナント</span></p></div></div><div class="middle"><div class="circle_wrap"><p class="circle_title"><span>五度圏表</span></p><div class="circle" id="js-circle"><div class="circle_area" id="js-circleArea"></div><div class="circle_cadence_area" id="js-cadenceArea"></div></div></div></div><div class="bottom"><div class="diatonic"><p class="diatonic_title"><span>ダイアトニックコード一覧</span></p><div class="diatonic_render"><div class="diatonic_default">五度圏表から選択したkeyのダイアトニックコードがこのエリアに表示されます。</div></div></div></div>';
+  const target = document.querySelector('main');
+  target.innerHTML = homeElement;
+};
 const circleCreate = (one, two) => {
   let target1 = document.querySelector('#js-circleArea');
   let target2 = document.querySelector('#js-circle');
@@ -200,7 +205,6 @@ async function createKey(text, position) {
   target.innerHTML = code;
   code = '';
 }
-
 const createTool = (data) => {
   const element = document.querySelectorAll('[data-tool]');
   for (let i = 0; i < element.length; i++) {
@@ -232,7 +236,6 @@ const createTool = (data) => {
     });
   }
 };
-
 async function main() {
   url = 'masterData.json';
   const jsonData = await fetch(url);
@@ -242,6 +245,7 @@ async function main() {
   const notes = res.notes;
   const chord = res.chord;
 
+  home();
   //五度圏表の作成
   const circleOne = res.circle.majar;
   const circleTwo = res.circle.minor;
