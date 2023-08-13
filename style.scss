@@ -807,7 +807,8 @@ main {
     &_tonic {
       margin-left: 20px;
       position: relative;
-      font-size: 14px;
+      font-size: 12px;
+      font-weight: bold;
       @include mq(sm) {
         font-size: 22px;
       }
@@ -827,7 +828,8 @@ main {
     &_sdominant {
       margin-left: 20px;
       position: relative;
-      font-size: 14px;
+      font-size: 12px;
+      font-weight: bold;
       @include mq(sm) {
         font-size: 22px;
       }
@@ -847,7 +849,8 @@ main {
     &_dominant {
       margin-left: 20px;
       position: relative;
-      font-size: 14px;
+      font-size: 12px;
+      font-weight: bold;
       @include mq(sm) {
         font-size: 22px;
       }
@@ -1019,7 +1022,10 @@ main {
     flex-wrap: wrap;
     &_default {
       margin-top: 24px;
-      font-size: 24px;
+      font-size: 16px;
+      @include mq(md) {
+        font-size: 24px;
+      }
     }
     &_title {
       font-weight: bold;
@@ -1121,7 +1127,10 @@ main {
   background-color: $_m;
   color: $_w;
   h1 {
-    font-size: 26px;
+    @include mq(md) {
+      font-size: 26px;
+    }
+    font-size: 16px;
     font-weight: bold;
   }
   .menu {
