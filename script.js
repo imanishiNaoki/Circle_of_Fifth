@@ -1,9 +1,78 @@
 'use strct';
-const home = () => {
+async function home() {
+  let domain = location.pathname;
+  let url = '';
+  if (domain.indexOf('/circle_of_fifth') > -1) {
+    url = '/circle_of_fifth/masterData.json';
+  } else {
+    url = '/masterData.json';
+  }
+  const jsonData = await fetch(url);
+  const res = await jsonData.json();
+  //コード関連
+  const symbol = res.symbol;
+  const notes = res.notes;
+  const chord = res.chord;
   const homeElement =
     '<div class="top"><div class="focus"><p class="focus_title"><span>Key</span></p><div class="focus_key" id="js-focus">-</div></div><div class="guide"><p class="guide_title"><span>コードの機能</span></p><p class="guide_tonic"><span class="tool" data-tool="1">トニック</span></p><p class="guide_dominant"><span class="tool" data-tool="2">ドミナント</span></p><p class="guide_sdominant"><span class="tool" data-tool="3">サブドミナント</span></p></div></div><div class="middle"><div class="circle_wrap"><p class="circle_title"><span>五度圏表</span></p><div class="circle" id="js-circle"><div class="circle_area" id="js-circleArea"></div><div class="circle_cadence_area" id="js-cadenceArea"></div></div></div></div><div class="bottom"><div class="diatonic"><p class="diatonic_title"><span>ダイアトニックコード一覧</span></p><div class="diatonic_render"><div class="diatonic_default">五度圏表から選択したkeyのダイアトニックコードがこのエリアに表示されます。</div></div></div></div>';
   const target = document.querySelector('main');
   target.innerHTML = homeElement;
+
+  //五度圏表の作成
+  const circleOne = res.circle.majar;
+  const circleTwo = res.circle.minor;
+  circleCreate(circleOne, circleTwo);
+
+  //五度圏表のボタンにイベント設定
+  const eventTarget = document.querySelectorAll('.circle_note');
+  circleEvent(eventTarget);
+  //ツールチップの作成
+  const tool = res.tool;
+  createTool(tool);
+}
+const header = () => {
+  let target = document.querySelector('.header');
+  let header = '<h1><a href="/home">五度圏表</a></h1><div class="menu"><span></span><span></span><span></span></div><div class="navi_overlay"></div><ul class="navi"><li class="navi_list"><a class="none" href="/about">このサイトについて</a></li><li class="navi_list"><a href="/home">五度圏表アプリ</a></li><li class="navi_list"><a class="none" href="/dictionary">コード・スケール集</a></li><li class="navi_list"><a class="none" href="/contact">お問い合わせ</a></li></ul>';
+  target.innerHTML = header;
+
+  let menu = document.querySelector('.menu');
+  let overlay = document.querySelector('.navi_overlay');
+  let navi = document.querySelector('.navi');
+  let list = document.querySelectorAll('.navi_list');
+
+  menu.addEventListener('click', function (e) {
+    if (menu.classList.contains('is-active')) {
+      menu.classList.remove('is-active');
+      overlay.classList.remove('is-active');
+      navi.classList.remove('is-active');
+    } else {
+      menu.classList.add('is-active');
+      overlay.classList.add('is-active');
+      navi.classList.add('is-active');
+    }
+    e.stopPropagation();
+  });
+
+  overlay.addEventListener('click', function (e) {
+    menu.classList.remove('is-active');
+    overlay.classList.remove('is-active');
+    navi.classList.remove('is-active');
+    e.stopPropagation();
+  });
+
+  for (let i = 0; i < list.length; i++) {
+    list[i].addEventListener('click', function (e) {
+      menu.classList.remove('is-active');
+      overlay.classList.remove('is-active');
+      navi.classList.remove('is-active');
+      e.stopPropagation();
+    });
+  }
+};
+const footer = () => {
+  let target = document.querySelector('.footer');
+  let footer = '<p>&copy;2023 <a href="https://twitter.com/manishi53">Imanishi Naoki</a><br />Special thanks to <a href="https://twitter.com/no1se_sh">Katsunoi Issei</a></p>';
+  target.innerHTML = footer;
 };
 const circleCreate = (one, two) => {
   let target1 = document.querySelector('#js-circleArea');
@@ -84,7 +153,13 @@ const circleEvent = (eventTarget) => {
   }
 };
 async function createKey(text, position) {
-  url = 'masterData.json';
+  let domain = location.pathname;
+  let url = '';
+  if (domain.indexOf('/circle_of_fifth') > -1) {
+    url = '/circle_of_fifth/masterData.json';
+  } else {
+    url = '/masterData.json';
+  }
   const jsonData = await fetch(url);
   const res = await jsonData.json();
   const notes = res.notes;
@@ -236,27 +311,58 @@ const createTool = (data) => {
     });
   }
 };
+
+const about = () => {
+  const element = '<h1>工事中</h1>';
+  const target = document.querySelector('main');
+  target.innerHTML = element;
+};
+const dictionary = () => {
+  const element = '<h1>工事中</h1>';
+  const target = document.querySelector('main');
+  target.innerHTML = element;
+};
+const contact = () => {
+  const element = '<h1>工事中</h1>';
+  const target = document.querySelector('main');
+  target.innerHTML = element;
+};
+
+const router = (url, flag) => {
+  if (url.indexOf('/about') > -1) {
+    about();
+    console.log(1);
+  } else if (url.indexOf('/dictionary') > -1) {
+    dictionary();
+    console.log(2);
+  } else if (url.indexOf('/contact') > -1) {
+    contact();
+    console.log(3);
+  } else {
+    home();
+  }
+};
+
 async function main() {
-  url = 'masterData.json';
-  const jsonData = await fetch(url);
-  const res = await jsonData.json();
-  //コード関連
-  const symbol = res.symbol;
-  const notes = res.notes;
-  const chord = res.chord;
+  let url = location.pathname;
+  let domain = '';
+  if (url.indexOf('/circle_of_fifth') > -1) {
+    domain = '/circle_of_fifth';
+  } else {
+    domain = '';
+  }
+  header();
+  footer();
 
-  home();
-  //五度圏表の作成
-  const circleOne = res.circle.majar;
-  const circleTwo = res.circle.minor;
-  circleCreate(circleOne, circleTwo);
-
-  //五度圏表のボタンにイベント設定
-  const eventTarget = document.querySelectorAll('.circle_note');
-  circleEvent(eventTarget);
-
-  //ツールチップの作成
-  const tool = res.tool;
-  createTool(tool);
+  router(url);
+  let link = document.querySelectorAll('a');
+  for (let i = 0; i < link.length; i++) {
+    link[i].addEventListener('click', (e) => {
+      e.preventDefault();
+      let path = e.target.pathname;
+      history.pushState(null, null, domain + path);
+      router(path);
+    });
+  }
 }
 main();
