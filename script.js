@@ -32,7 +32,7 @@ async function home() {
 }
 const header = () => {
   let target = document.querySelector('.header');
-  let header = '<h1><a href="/home">五度圏表</a></h1><div class="menu"><span></span><span></span><span></span></div><div class="navi_overlay"></div><ul class="navi"><li class="navi_list"><a class="none" href="/about">このサイトについて</a></li><li class="navi_list"><a href="/home">五度圏表アプリ</a></li><li class="navi_list"><a class="none" href="/dictionary">コード・スケール集</a></li><li class="navi_list"><a class="none" href="/contact">お問い合わせ</a></li></ul>';
+  let header = '<h1><a href="/home">初心者でも使える五度圏表アプリ</a></h1><div class="menu"><span></span><span></span><span></span></div><div class="navi_overlay"></div><ul class="navi"><li class="navi_list"><a class="none" href="/about">このサイトについて</a></li><li class="navi_list"><a href="/home">五度圏表アプリ</a></li><li class="navi_list"><a class="none" href="/dictionary">コード・スケール集</a></li><li class="navi_list"><a class="none" href="/contact">お問い合わせ</a></li></ul>';
   target.innerHTML = header;
 
   let menu = document.querySelector('.menu');
