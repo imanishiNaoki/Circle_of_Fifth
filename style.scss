@@ -65,6 +65,12 @@ main {
 --------------------------------------*/
 .container {
   margin: 30px 20px 0 20px;
+  @include mq(md) {
+    margin: 40px 20px 0 20px;
+  }
+  @include mq(lg) {
+    margin: 70px 20px 0 20px;
+  }
 }
 
 .middle {
@@ -768,7 +774,7 @@ main {
   align-items: stretch;
   @include mq(lg) {
     width: 48%;
-    padding-top: 40px;
+    padding-top: 30px;
     flex-direction: column;
     justify-content: flex-start;
   }
