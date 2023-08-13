@@ -14,7 +14,7 @@ async function home() {
   const notes = res.notes;
   const chord = res.chord;
   const homeElement =
-    '<div class="top"><div class="focus"><p class="focus_title"><span>Key</span></p><div class="focus_key" id="js-focus">-</div></div><div class="guide"><p class="guide_title"><span>コードの機能</span></p><p class="guide_tonic"><span class="tool" data-tool="1">トニック</span></p><p class="guide_dominant"><span class="tool" data-tool="2">ドミナント</span></p><p class="guide_sdominant"><span class="tool" data-tool="3">サブドミナント</span></p></div></div><div class="middle"><div class="circle_wrap"><p class="circle_title"><span>五度圏表</span></p><div class="circle" id="js-circle"><div class="circle_area" id="js-circleArea"></div><div class="circle_cadence_area" id="js-cadenceArea"></div></div></div></div><div class="bottom"><div class="diatonic"><p class="diatonic_title"><span>ダイアトニックコード一覧</span></p><div class="diatonic_render"><div class="diatonic_default">五度圏表から選択したkeyのダイアトニックコードがこのエリアに表示されます。</div></div></div></div>';
+    '<div class="top"><div class="focus"><p class="focus_title"><span>Key</span></p><div class="focus_key" id="js-focus">-</div></div><div class="guide"><p class="guide_title"><span>コードの機能</span></p><p class="guide_tonic"><span class="tool" data-tool="1">トニック</span></p><p class="guide_dominant"><span class="tool" data-tool="2">ドミナント</span></p><p class="guide_sdominant"><span class="tool" data-tool="3">サブドミナント</span></p></div></div><div class="middle"><div class="circle_wrap"><p class="circle_title"><span>五度圏表</span></p><div class="circle" id="js-circle"><div class="circle_area" id="js-circleArea"></div><div class="circle_cadence_area" id="js-cadenceArea"></div></div></div></div><div class="bottom"><div class="diatonic"><p class="diatonic_title"><span>ダイアトニックコード</span></p><div class="diatonic_render"><div class="diatonic_default">五度圏表から選択したkeyのダイアトニックコードがこのエリアに表示されます。</div></div></div></div>';
   const target = document.querySelector('main');
   target.innerHTML = homeElement;
 
@@ -243,17 +243,11 @@ async function createKey(text, position) {
     code += '<div class="diatonic_area">';
     if (!resultattr) {
       if (c == 0) {
-        code += `<div class="diatonic_sub">${planeKey} ダイアトニックコード</div>`;
-      }
-      if (c == 1) {
-        code += `<div class="diatonic_sub">${planeKey}△7 ダイアトニックコード</div>`;
+        code += `<div class="diatonic_sub">${planeKey} メジャーダイアトニックコード</div>`;
       }
     } else {
       if (c == 0) {
         code += `<div class="diatonic_sub">${planeKey} ダイアトニックコード</div>`;
-      }
-      if (c == 1) {
-        code += `<div class="diatonic_sub">${planeKey}7 ダイアトニックコード</div>`;
       }
     }
     code += '<div class="diatonic_content">';

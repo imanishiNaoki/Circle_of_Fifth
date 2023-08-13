@@ -39,7 +39,7 @@ main {
     container
 --------------------------------------*/
 .container {
-  margin: 0 20px;
+  margin: 30px 20px 0 20px;
 }
 
 .middle {
@@ -72,7 +72,7 @@ main {
   }
 }
 .circle_wrap {
-  margin-top: 40px;
+  margin-top: 30px;
   border: 1px solid #393939;
   border-radius: 8px/8px;
   padding: 0 16px 16px 16px;
@@ -1060,7 +1060,7 @@ main {
   }
 }
 .bottom {
-  margin-top: 40px;
+  margin-top: 30px;
 }
 @media screen and (min-width: 1025px) {
   .bottom {
@@ -1076,7 +1076,7 @@ main {
   flex-wrap: wrap;
 }
 .bottom .diatonic_default {
-  margin-top: 24px;
+  margin-top: -6px;
   font-size: 16px;
 }
 @media screen and (min-width: 769px) {
@@ -1142,6 +1142,9 @@ main {
 .bottom .diatonic_attr.sdominant {
   background-color: #f3ff96;
 }
+.bottom .diatonic_render {
+  padding-top: 20px;
+}
 .bottom .diatonic_chord {
   padding: 10px 0;
   display: flex;
@@ -1153,7 +1156,7 @@ main {
   background-color: #fff;
 }
 .bottom .diatonic_area {
-  margin-top: 30px;
+  margin-top: 10px;
 }
 .bottom .diatonic_sub {
   margin-bottom: 10px;
@@ -1170,7 +1173,7 @@ main {
 }
 
 .footer {
-  margin-top: 40px;
+  margin-top: 30px;
   text-align: center;
   font-size: 16px;
   padding: 20px 0;
@@ -1189,6 +1192,11 @@ main {
   align-items: center;
   background-color: #393939;
   color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1050;
 }
 .header h1 {
   font-size: 16px;
@@ -1245,7 +1253,7 @@ main {
 .header .navi_list a {
   color: #393939;
   display: block;
-  padding: 20px 140px 20px 40px;
+  padding: 10px 140px 10px 24px;
   border-bottom: 1px solid #c9c9c9;
   position: relative;
 }
