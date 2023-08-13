@@ -2,8 +2,8 @@
 async function home() {
   let domain = location.pathname;
   let url = '';
-  if (domain.indexOf('/circle_of_fifth') > -1) {
-    url = '/circle_of_fifth/masterData.json';
+  if (domain.indexOf('/Circle_of_Fifth') > -1) {
+    url = '/Circle_of_Fifth/masterData.json';
   } else {
     url = '/masterData.json';
   }
@@ -155,8 +155,8 @@ const circleEvent = (eventTarget) => {
 async function createKey(text, position) {
   let domain = location.pathname;
   let url = '';
-  if (domain.indexOf('/circle_of_fifth') > -1) {
-    url = '/circle_of_fifth/masterData.json';
+  if (domain.indexOf('/Circle_of_Fifth') > -1) {
+    url = '/Circle_of_Fifth/masterData.json';
   } else {
     url = '/masterData.json';
   }
@@ -346,8 +346,8 @@ const router = (url, flag) => {
 async function main() {
   let url = location.pathname;
   let domain = '';
-  if (url.indexOf('/circle_of_fifth') > -1) {
-    domain = '/circle_of_fifth';
+  if (url.indexOf('/Circle_of_Fifth') > -1) {
+    domain = '/Circle_of_Fifth';
   } else {
     domain = '';
   }
