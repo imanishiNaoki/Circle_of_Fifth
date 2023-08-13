@@ -71,7 +71,7 @@ const header = () => {
 };
 const footer = () => {
   let target = document.querySelector('.footer');
-  let footer = '<p>&copy;2023 <a href="https://twitter.com/manishi53">Imanishi Naoki</a><br />Special thanks to <a href="https://twitter.com/no1se_sh">Katsunoi Issei</a></p>';
+  let footer = '<p>&copy;2023 <a href="https://twitter.com/manishi53" target="_blank">Imanishi Naoki</a><br />Special thanks to <a href="https://twitter.com/no1se_sh" target="_blank">Katsunoi Issei</a></p>';
   target.innerHTML = footer;
 };
 const circleCreate = (one, two) => {
@@ -355,7 +355,7 @@ async function main() {
   footer();
 
   router(url);
-  let link = document.querySelectorAll('a');
+  let link = document.querySelectorAll('a:not(.footer a)');
   for (let i = 0; i < link.length; i++) {
     link[i].addEventListener('click', (e) => {
       e.preventDefault();
