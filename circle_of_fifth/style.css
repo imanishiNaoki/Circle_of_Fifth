@@ -1060,6 +1060,10 @@ main {
   flex-direction: column;
   flex-wrap: wrap;
 }
+.bottom .diatonic_default {
+  margin-top: 24px;
+  font-size: 24px;
+}
 .bottom .diatonic_title {
   font-weight: bold;
   margin-top: -20px;

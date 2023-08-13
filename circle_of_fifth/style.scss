@@ -1009,6 +1009,10 @@ main {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    &_default {
+      margin-top: 24px;
+      font-size: 24px;
+    }
     &_title {
       font-weight: bold;
       margin-top: -20px;

@@ -1,6 +1,6 @@
 'use strct';
 
-const circleCreate = (one, two, three) => {
+const circleCreate = (one, two) => {
   let target1 = document.querySelector('#js-circleArea');
   let target2 = document.querySelector('#js-circle');
   let target3 = document.querySelector('#js-cadenceArea');
@@ -18,7 +18,7 @@ const circleCreate = (one, two, three) => {
   code = '';
 
   //ダイアトニックコードの色分け
-  for (let i = 1; i < 8; i++) {
+  for (let i = 1; i < 7; i++) {
     code += `<div class="circle_cadence note${i}"></div>`;
   }
   target3.innerHTML = code;
@@ -32,10 +32,6 @@ const circleCreate = (one, two, three) => {
   for (let i = 1; i <= Object.keys(two).length; i++) {
     code += `<div class="circle_note"  data-round="2" data-position="${i}">${two[i]}</div>`;
   }
-  //ディミニッシュ
-  for (let i = 1; i <= Object.keys(three).length; i++) {
-    code += `<div class="circle_note" data-round="3" data-position="${i}">${three[i]}</div>`;
-  }
   target2.insertAdjacentHTML('beforeend', code);
 };
 const circleEvent = (eventTarget) => {
@@ -43,14 +39,14 @@ const circleEvent = (eventTarget) => {
   let circle = document.querySelector('.circle');
   let cadence = document.querySelector('.circle_cadence_area');
   let cadenceNote = document.querySelectorAll('.circle_cadence');
+  let focus = document.querySelector('#js-focus');
   for (let i = 0; i < eventTarget.length; i++) {
     //各ボタンにイベントを付与
     eventTarget[i].addEventListener('click', function (e) {
       //data属性の取得
       let position = e.target.dataset.position - 1;
       let data = e.target.dataset.round;
-      let dimArray = document.querySelectorAll('[data-round="3"]');
-      let dim = document.querySelector(`[data-round="3"][data-position="${position + 1}"]`);
+      let positionMaster = e.target.dataset.position;
       let text = e.target.innerText;
 
       for (let l = 0; l < eventTarget.length; l++) {
@@ -69,12 +65,6 @@ const circleEvent = (eventTarget) => {
       for (let l = 0; l < cadenceNote.length; l++) {
         cadenceNote[l].classList.add('is-active');
       }
-      //dimのアクティブを削除
-      for (let l = 0; l < dimArray.length; l++) {
-        dimArray[l].classList.remove('is-active');
-      }
-      //選択要素だけにis-activeを付与してアクティブ表示
-      dim.classList.add('is-active');
       //クリックしたキーにあわせてアクティブコード表示を変更する
       if (data != 1) {
         cadence.classList.remove('majar');
@@ -83,17 +73,118 @@ const circleEvent = (eventTarget) => {
         cadence.classList.remove('minor');
         cadence.classList.add('majar');
       }
-      getKey(text);
+      focus.innerHTML = text;
+      createKey(text, positionMaster);
     });
   }
 };
 
-const getKey = (text) => {
-  let key = document.querySelector('#js-focus');
-  let diatonicTitle = document.querySelector('#js-diatonicTitle');
-  key.innerText = text;
-  //diatonicTitle.innerText = `${text} ダイアトニックコード`;
-};
+async function createKey(text, position) {
+  url = 'masterData.json';
+  const jsonData = await fetch(url);
+  const res = await jsonData.json();
+  const notes = res.notes;
+  const chord = res.chord;
+  const feature = res.feature;
+  let num = 0;
+  let featureArray;
+  let attr = '';
+  let resultattr;
+  let degree = ['Ⅰ', 'Ⅱ', 'Ⅲ', 'Ⅳ', 'Ⅴ', 'Ⅵ', 'Ⅶ'];
+  let attrPattern = [
+    [
+      ['', 'm', 'm', '', '', 'm', 'dim'],
+      ['△7', 'm7', 'm7', '△7', '7', 'm7', 'm7-5'],
+    ],
+    [
+      ['m', 'dim', '', 'm', 'm', '', ''],
+      ['m', 'm7-5', '△7', 'm7', 'm7', '△7', '7'],
+    ],
+  ];
+  let symbol = [
+    ['', '', '', '', '', '', ''],
+    ['', '', '', '', '', '', '#'],
+    ['', '', '#', '', '', '', '#'],
+    ['', '', '#', '', '', '#', '#'],
+    ['', '#', '#', '', '', '#', '#'],
+    ['', '#', '#', '', '#', '#', '#'],
+    ['♭', '♭', '♭', '♭', '♭', '♭', ''],
+    ['♭', '♭', '', '♭', '♭', '♭', ''],
+    ['♭', '♭', '', '♭', '♭', '', ''],
+    ['♭', '', '', '♭', '♭', '', ''],
+    ['♭', '', '', '♭', '', '', ''],
+    ['', '', '', '♭', '', '', ''],
+  ];
+  let planeKey = text;
+  let getkey = text.replace(/[m#♭ \n].*/g, '');
+  const attrCheck = document.querySelector('.circle_cadence_area');
+  let target = document.querySelector('.diatonic_render');
+  let code = '';
+
+  let result = attrCheck.classList.contains('majar');
+  if (result) {
+    //メジャー場合
+    featureArray = ['0', '2', '0', '2', '1', '0', '1'];
+  } else {
+    //マイナーの場合
+    featureArray = ['0', '2', '0', '2', '1', '2', '1'];
+  }
+
+  let key = Object.keys(notes);
+  let chordName = Object.values(notes);
+
+  for (let i = 0; i < key.length; i++) {
+    if (key[i] == getkey) {
+      num = i;
+      break;
+    }
+  }
+  if (result) {
+    resultattr = 0;
+  } else {
+    resultattr = 1;
+  }
+  for (let c = 0; c < attrPattern[resultattr].length; c++) {
+    code += '<div class="diatonic_area">';
+    if (!resultattr) {
+      if (c == 0) {
+        code += `<div class="diatonic_sub">${planeKey} ダイアトニックコード</div>`;
+      }
+      if (c == 1) {
+        code += `<div class="diatonic_sub">${planeKey}△7 ダイアトニックコード</div>`;
+      }
+    } else {
+      if (c == 0) {
+        code += `<div class="diatonic_sub">${planeKey} ダイアトニックコード</div>`;
+      }
+      if (c == 1) {
+        code += `<div class="diatonic_sub">${planeKey}7 ダイアトニックコード</div>`;
+      }
+    }
+    code += '<div class="diatonic_content">';
+
+    for (let i = 0; i < chordName[num].length; i++) {
+      code += '<div class="diatonic_chord_name">';
+      //パターン
+      if (featureArray[i] == 0) {
+        attr = feature.tonic;
+      }
+      if (featureArray[i] == 1) {
+        attr = feature.dominant;
+      }
+      if (featureArray[i] == 2) {
+        attr = feature.sdominant;
+      }
+      code += `<div class="diatonic_attr ${attr}">${degree[i]}${attrPattern[resultattr][c][i]}</div>`;
+      code += `<div class="diatonic_chord">${chordName[num][i]}${symbol[position - 1][i]}${attrPattern[resultattr][c][i]}</div>`;
+      code += '</div>';
+    }
+    code += '</div>';
+    code += '</div>';
+  }
+  target.innerHTML = code;
+  code = '';
+}
 
 const createTool = (data) => {
   const element = document.querySelectorAll('[data-tool]');
@@ -137,10 +228,9 @@ async function main() {
   const chord = res.chord;
 
   //五度圏表の作成
-  const circleOne = res.circle.one;
-  const circleTwo = res.circle.two;
-  const circleThree = res.circle.three;
-  circleCreate(circleOne, circleTwo, circleThree);
+  const circleOne = res.circle.majar;
+  const circleTwo = res.circle.minor;
+  circleCreate(circleOne, circleTwo);
 
   //五度圏表のボタンにイベント設定
   const eventTarget = document.querySelectorAll('.circle_note');
