@@ -53,10 +53,10 @@ a {
 main {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   @include mq(lg) {
     flex-direction: row;
     justify-content: space-between;
+    flex-wrap: wrap;
   }
 }
 
@@ -765,6 +765,7 @@ main {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
+  align-items: stretch;
   @include mq(lg) {
     width: 48%;
     padding-top: 40px;
@@ -778,6 +779,7 @@ main {
     border-radius: 8px/8px;
     padding: 0 16px 16px 16px;
     width: 55%;
+    height: 100%;
     @include mq(lg) {
       width: 100%;
       flex-grow: 1;
@@ -894,12 +896,18 @@ main {
       }
     }
     &_key {
+      margin-top: 20px;
       font-size: 50px;
       font-weight: bold;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100%;
+      @include mq(sm) {
+        margin-top: 40px;
+      }
+      @include mq(lg) {
+        margin-top: -20px;
+      }
     }
   }
 }

@@ -26,12 +26,12 @@ a {
 main {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
 }
 @media screen and (min-width: 1025px) {
   main {
     flex-direction: row;
     justify-content: space-between;
+    flex-wrap: wrap;
   }
 }
 
@@ -795,6 +795,7 @@ main {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
+  align-items: stretch;
 }
 @media screen and (min-width: 1025px) {
   .top {
@@ -811,6 +812,7 @@ main {
   border-radius: 8px/8px;
   padding: 0 16px 16px 16px;
   width: 55%;
+  height: 100%;
 }
 @media screen and (min-width: 1025px) {
   .top .guide {
@@ -943,12 +945,22 @@ main {
   }
 }
 .top .focus_key {
+  margin-top: 20px;
   font-size: 50px;
   font-weight: bold;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+}
+@media screen and (min-width: 640px) {
+  .top .focus_key {
+    margin-top: 40px;
+  }
+}
+@media screen and (min-width: 1025px) {
+  .top .focus_key {
+    margin-top: -20px;
+  }
 }
 
 .tool {
