@@ -32,7 +32,8 @@ async function home() {
 }
 const header = () => {
   let target = document.querySelector('.header');
-  let header = '<h1><a href="/home">初心者でも使える五度圏表アプリ</a></h1><div class="menu"><span></span><span></span><span></span></div><div class="navi_overlay"></div><ul class="navi"><li class="navi_list"><a class="none" href="/about">このサイトについて</a></li><li class="navi_list"><a href="/home">五度圏表アプリ</a></li><li class="navi_list"><a class="none" href="/dictionary">コード・スケール集</a></li><li class="navi_list"><a class="none" href="/contact">お問い合わせ</a></li></ul>';
+  let header =
+    '<h1><a href="/">初心者でも使える五度圏表アプリ</a></h1><div class="menu"><span></span><span></span><span></span></div><div class="navi_overlay"></div><ul class="navi"><li class="navi_list"><a href="/update">更新履歴</a></li><li class="navi_list"><a href="/about">このサイトについて</a></li><li class="navi_list"><a href="/">五度圏表アプリ</a></li><li class="navi_list"><a class="none" href="/dictionary">コード・スケール集</a></li><li class="navi_list"><a class="none" href="/contact">お問い合わせ</a></li></ul>';
   target.innerHTML = header;
 
   let menu = document.querySelector('.menu');
@@ -71,7 +72,7 @@ const header = () => {
 };
 const footer = () => {
   let target = document.querySelector('.footer');
-  let footer = '<p>&copy;2023 <a href="https://twitter.com/manishi53" target="_blank">Imanishi Naoki</a><br />Special thanks to <a href="https://twitter.com/no1se_sh" target="_blank">Katsunoi Issei</a></p>';
+  let footer = '<p>&copy;2023 <a style="text-decoration:underline" href="https://twitter.com/manishi53" target="_blank">Naoki Imanishi</a><br />Special thanks to <a style="text-decoration:underline" href="https://twitter.com/no1se_sh" target="_blank">Issei Katsunoi</a></p>';
   target.innerHTML = footer;
 };
 const circleCreate = (one, two) => {
@@ -305,33 +306,91 @@ const createTool = (data) => {
     });
   }
 };
-
 const about = () => {
-  const element = '<h1>工事中</h1>';
   const target = document.querySelector('main');
-  target.innerHTML = element;
+  let code = '';
+
+  code += '<div class="end">';
+  code += '<h1>このサイトについて</h1>';
+  code += '<p><span class="bold">初心者でも使える五度圏表アプリ</span>に興味を持っていただきありがとうございます。<br>本Webアプリケーション製作者の今西です。</p>';
+  code += '<p>軽い自己紹介をさせていただきますと、兵庫県出身アラサーの現役フロントエンドエンジニアです。</p>';
+  code += '<p>趣味は最近はあまりできていませんが、YouTubeに演奏動画を上げることで、細々と活動しております。</p>';
+  code += '<br><p>さて、私のバックグラウンドを少し語らせていただいたところで本題の<span class="bold">このサイトについて</span>をお話しさせていただきます。</p>';
+  code += '<p>このサイト、アプリケーションのターゲットは<span class="bold">作曲をしてみたいが理論をあまり知らない初心者の方</span>です。いざ作曲しようと思っても理論を覚えるのがめんどくさい、Keyに対してダイアトニックコードが何になるかわからない、何度か勉強したけど挫折してその度に忘れた、みたいな作曲する上での問題を少しでも解決できればいいな〜　をざっくりとした目標としています。</p>';
+
+  code += '<br><p>先駆者様がいろんな音楽理論の解説をしていますが、初心者ではなかなか情報の取捨選択は難しいと感じております。<br>またwebページの都合上、解説は1Pに対して1つの解説になるのが基本で（たとえばメジャーキーのダイアトニックコードの機能についてとか）、<span class="bold" >初心者が曲を作ろうとするには何ページも跨いで見る必要があるため余計な画面遷移が発生してしまい結構めんどくさい</span>と私は感じました。</p>';
+  code += '<p>そこで私は、<span class="bold">「じゃあ五度圏表からKeyを選択したらダイアトニックコードが表示されるWebページを作れば良くないか？忘れやすい用語とかもすぐ見れるようにクリックしたら表示するとか、コードをクリックしたら構成音が出てきたらかなり便利なんじゃあないか？」</span>と思い作成しました。</p>';
+  code += '<p><br>全ては私みたいなめんどくさがりで忘れがちな初心者の方々に向けて、作曲活動を補助するお手伝いができることをこのWebアプリケーションに期待しております。</p>';
+  code += '<br><br><br>';
+  code += '<p style="text-align:right">Dev/Design：<a style="text-decoration:underline" href="https://twitter.com/manishi53" target="_blank">Naoki Imanishi</a></p>';
+  code += '<p style="text-align:right">Special thanks：<a style="text-decoration:underline" href="https://twitter.com/no1se_sh" target="_blank">Issei Katsunoi</a></p>';
+  code += '</div>';
+
+  target.innerHTML = code;
+};
+const update = () => {
+  async function getJson() {
+    const target = document.querySelector('main');
+
+    let code = '';
+    let domain = location.pathname;
+    let url = '';
+    if (domain.indexOf('/Circle_of_Fifth') > -1) {
+      url = '/Circle_of_Fifth/update.json';
+    } else {
+      url = '/update.json';
+    }
+    const jsonData = await fetch(url);
+    const res = await jsonData.json();
+    code += '<div class="end">';
+    code += '<h1>更新履歴</h1>';
+    for (let i = 0; i < Object.keys(res.update).length; i++) {
+      code += `<div class="update_content"><p class="update_content_title"><span class="date">${Object.values(res.update)[i].date}</span>${Object.values(res.update)[i].title}</p>`;
+      code += `<div class="update_detail">${Object.values(res.update)[i].detail}</div></div>`;
+    }
+    code += '</div>';
+    target.innerHTML = code;
+
+    let updateContent = document.querySelectorAll('.update_content');
+    for (let i = 0; i < updateContent.length; i++) {
+      updateContent[i].addEventListener('click', function (e) {
+        this.classList.toggle('is-active');
+        e.stopPropagation();
+      });
+    }
+  }
+  getJson();
 };
 const dictionary = () => {
-  const element = '<h1>工事中</h1>';
   const target = document.querySelector('main');
-  target.innerHTML = element;
+  let code = '';
+
+  code += '<div class="end">';
+  code += '<h1>コード・スケール集</h1>';
+  code += '</div>';
+
+  target.innerHTML = code;
 };
 const contact = () => {
-  const element = '<h1>工事中</h1>';
   const target = document.querySelector('main');
-  target.innerHTML = element;
+  let code = '';
+
+  code += '<div class="end">';
+  code += '<h1>お問い合わせ</h1>';
+  code += '</div>';
+
+  target.innerHTML = code;
 };
 
-const router = (url, flag) => {
+const router = (url) => {
   if (url.indexOf('/about') > -1) {
     about();
-    console.log(1);
   } else if (url.indexOf('/dictionary') > -1) {
     dictionary();
-    console.log(2);
   } else if (url.indexOf('/contact') > -1) {
     contact();
-    console.log(3);
+  } else if (url.indexOf('/update') > -1) {
+    update();
   } else {
     home();
   }
