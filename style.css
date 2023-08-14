@@ -1013,12 +1013,14 @@ main {
 .tool_title {
   margin-bottom: 10px;
   border-left: 3px solid #393939;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: bold;
   padding-left: 6px;
 }
 .tool_text {
   margin-bottom: 0;
+  font-size: 16px;
+  font-weight: normal;
 }
 .tool_detail {
   text-align: right;
