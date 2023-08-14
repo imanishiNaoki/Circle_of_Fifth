@@ -336,9 +336,9 @@ const update = () => {
     let domain = location.pathname;
     let url = '';
     if (domain.indexOf('/Circle_of_Fifth') > -1) {
-      url = '/Circle_of_Fifth/update.json';
+      url = '/Circle_of_Fifth/upDate.json';
     } else {
-      url = '/update.json';
+      url = '/upDate.json';
     }
     const jsonData = await fetch(url);
     const res = await jsonData.json();
@@ -381,7 +381,6 @@ const contact = () => {
 
   target.innerHTML = code;
 };
-
 const router = (url) => {
   if (url.indexOf('/about') > -1) {
     about();
@@ -395,7 +394,6 @@ const router = (url) => {
     home();
   }
 };
-
 async function main() {
   let url = location.pathname;
   let domain = '';
