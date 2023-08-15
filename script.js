@@ -33,7 +33,7 @@ async function home() {
 const header = () => {
   let target = document.querySelector('.header');
   let header =
-    '<h1><a href="/">初心者でも使える五度圏表アプリ</a></h1><div class="menu"><span></span><span></span><span></span></div><div class="navi_overlay"></div><ul class="navi"><li class="navi_list"><a href="/update">更新履歴</a></li><li class="navi_list"><a href="/about">このサイトについて</a></li><li class="navi_list"><a href="/">五度圏表アプリ</a></li><li class="navi_list"><a class="none" href="/dictionary">コード・スケール集</a></li><li class="navi_list"><a class="none" href="/contact">お問い合わせ</a></li></ul>';
+    '<h1><a href="#home">初心者でも使える五度圏表アプリ</a></h1><div class="menu"><span></span><span></span><span></span></div><div class="navi_overlay"></div><ul class="navi"><li class="navi_list"><a href="#update">更新履歴</a></li><li class="navi_list"><a href="#about">このサイトについて</a></li><li class="navi_list"><a href="#home">五度圏表アプリ</a></li><li class="navi_list"><a class="none" href="#dictionary">コード・スケール集</a></li><li class="navi_list"><a class="none" href="#contact">お問い合わせ</a></li></ul>';
   target.innerHTML = header;
 
   let menu = document.querySelector('.menu');
@@ -332,6 +332,12 @@ const update = () => {
   async function getJson() {
     const target = document.querySelector('main');
 
+    let date = new Date();
+    let year = date.getFullYear();
+    let month = date.getMonth() + 1;
+    let day = date.getDate();
+    let now = `${year}/${month}/${day}`;
+
     let code = '';
     let domain = location.pathname;
     let url = '';
@@ -344,8 +350,15 @@ const update = () => {
     const res = await jsonData.json();
     code += '<div class="end">';
     code += '<h1>更新履歴</h1>';
-    for (let i = 0; i < Object.keys(res.update).length; i++) {
-      code += `<div class="update_content"><p class="update_content_title"><span class="date">${Object.values(res.update)[i].date}</span>${Object.values(res.update)[i].title}</p>`;
+    for (let i = Object.keys(res.update).length - 1; i >= 0; i--) {
+      if (Object.values(res.update)[i].date == now) {
+        code += '<div class="update_content is-active">';
+      } else {
+        code += '<div class="update_content">';
+      }
+      code += '<p class="update_content_title">';
+      code += `<span class="date">${Object.values(res.update)[i].date}</span>`;
+      code += `${Object.values(res.update)[i].title}</p>`;
       code += `<div class="update_detail">${Object.values(res.update)[i].detail}</div></div>`;
     }
     code += '</div>';
@@ -382,20 +395,20 @@ const contact = () => {
   target.innerHTML = code;
 };
 const router = (url) => {
-  if (url.indexOf('/about') > -1) {
+  if (url.indexOf('/#about') > -1) {
     about();
-  } else if (url.indexOf('/dictionary') > -1) {
+  } else if (url.indexOf('/#dictionary') > -1) {
     dictionary();
-  } else if (url.indexOf('/contact') > -1) {
+  } else if (url.indexOf('/#contact') > -1) {
     contact();
-  } else if (url.indexOf('/update') > -1) {
+  } else if (url.indexOf('/#update') > -1) {
     update();
   } else {
     home();
   }
 };
 async function main() {
-  let url = location.pathname;
+  let url = location.href;
   let domain = '';
   if (url.indexOf('/Circle_of_Fifth') > -1) {
     domain = '/Circle_of_Fifth';
@@ -409,10 +422,7 @@ async function main() {
   let link = document.querySelectorAll('a:not(.footer a)');
   for (let i = 0; i < link.length; i++) {
     link[i].addEventListener('click', (e) => {
-      e.preventDefault();
-      let path = e.target.pathname;
-      history.pushState(null, null, domain + path);
-      router(path);
+      router(e.target.href);
     });
   }
 }

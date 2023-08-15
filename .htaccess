@@ -1,3 +1,19 @@
+SetEnvIf Referer "^https://in53-production.com/Circle_of_Fifth/" ok_url
+SetEnvIf Referer "google" ok_url
+SetEnvIf Referer "bing" ok_url
+SetEnvIf Referer "yahoo" ok_url
+SetEnvIf User-Agent "^Googlebot.*$" ok_url
+SetEnvIf User-Agent "Slurp" ok_url
+SetEnvIf User-Agent "msnbot" ok_url
+SetEnvIf User-Agent "^Twitterbot.*$" ok_url
+SetEnvIf User-Agent "^facebookexternalhit.*$" ok_url
+SetEnvIf User-Agent "^facebookplatform.*$" ok_url
+<Files ~ "\.(jpg|jpeg|gif|png|pdf|zip|json|js)$">
+order deny,allow
+deny from all
+allow from env=ok_url
+</Files>
+
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f

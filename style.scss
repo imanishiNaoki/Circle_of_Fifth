@@ -1195,6 +1195,7 @@ main {
         border-bottom: 1px solid $_s;
         position: relative;
         &.none {
+          pointer-events: none;
           &::before {
             content: '未実装';
             position: absolute;
@@ -1233,36 +1234,29 @@ main {
     margin: 0 4px;
   }
   .update_content {
+    cursor: pointer;
     box-sizing: border-box;
     display: flex;
     justify-content: center;
     flex-direction: column;
     margin-top: -1px;
     &_title {
-      font-size: 18px;
+      font-size: 16px;
       font-weight: bold;
       margin: 0;
       border: 1px solid $_m;
-      padding: 8px 30px 8px 10px;
+      padding: 4px 30px 4px 10px;
       position: relative;
-
-      &::before {
-        position: absolute;
-        content: '';
-        top: 50%;
-        transform: translateY(-50%);
-        right: 20px;
-        border: #393939 solid 1px;
-        border-radius: 50%/50%;
-        width: 30px;
-        height: 30px;
+      @include mq(md) {
+        font-size: 18px;
       }
+
       &::after {
         position: absolute;
         content: '';
         top: calc(50% - 2px);
         transform: translate(-50%, -50%) rotate(45deg);
-        right: 25px;
+        right: 20px;
         border-right: #393939 solid 2px;
         border-bottom: #393939 solid 2px;
         box-sizing: border-box;
@@ -1277,23 +1271,13 @@ main {
       font-size: 30px;
       .update_content_title {
         background-color: #eaeaea;
-        &::before {
-          position: absolute;
-          content: '';
-          top: 50%;
-          transform: translateY(-50%);
-          right: 20px;
-          border: #393939 solid 1px;
-          border-radius: 50%/50%;
-          width: 30px;
-          height: 30px;
-        }
+
         &::after {
           position: absolute;
           content: '';
           top: calc(50% + 2px);
           transform: translate(-50%, -50%) rotate(-135deg);
-          right: 25px;
+          right: 20px;
           border-right: #393939 solid 2px;
           border-bottom: #393939 solid 2px;
           box-sizing: border-box;
