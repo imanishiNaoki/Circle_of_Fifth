@@ -30,8 +30,9 @@ main {
 @media screen and (min-width: 1025px) {
   main {
     flex-direction: row;
-    justify-content: space-between;
     flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
   }
 }
 
@@ -88,23 +89,13 @@ main {
   margin-top: -20px;
   margin-left: -6px;
 }
-@media screen and (min-width: 1025px) {
-  .circle_title {
-    margin-top: -30px;
-  }
-}
 .circle_title span {
   background-color: #fff;
   position: relative;
   z-index: 1001;
   display: inline-block;
-  padding: 0 10px;
+  padding: 0 10px 30px 10px;
   font-size: 22px;
-}
-@media screen and (min-width: 1025px) {
-  .circle_title span {
-    font-size: 40px;
-  }
 }
 @media screen and (min-width: 1025px) {
   .circle {
@@ -804,7 +795,7 @@ main {
 }
 @media screen and (min-width: 1025px) {
   .top {
-    width: 48%;
+    width: 18%;
     flex-direction: column;
     justify-content: flex-start;
   }
@@ -830,11 +821,6 @@ main {
   margin-top: -20px;
   margin-left: -6px;
 }
-@media screen and (min-width: 1025px) {
-  .top .guide_title {
-    margin-top: -30px;
-  }
-}
 .top .guide_title span {
   background-color: #fff;
   position: relative;
@@ -843,23 +829,23 @@ main {
   padding: 0 10px;
   font-size: 22px;
 }
-@media screen and (min-width: 1025px) {
-  .top .guide_title span {
-    font-size: 40px;
-  }
-}
-.top .guide_tonic {
+.top .guide_text {
   margin-left: 20px;
   position: relative;
   font-size: 12px;
   font-weight: bold;
 }
-@media screen and (min-width: 640px) {
-  .top .guide_tonic {
-    font-size: 22px;
+@media screen and (min-width: 1025px) {
+  .top .guide_text {
+    font-size: 16px;
   }
 }
-.top .guide_tonic::before {
+.top .guide_text.-tonic {
+  margin-left: 20px;
+  position: relative;
+  font-weight: bold;
+}
+.top .guide_text.-tonic::before {
   position: absolute;
   content: "";
   top: 50%;
@@ -870,18 +856,12 @@ main {
   opacity: 1;
   transform: translateY(-50%);
 }
-.top .guide_sdominant {
+.top .guide_text.-sdominant {
   margin-left: 20px;
   position: relative;
-  font-size: 12px;
   font-weight: bold;
 }
-@media screen and (min-width: 640px) {
-  .top .guide_sdominant {
-    font-size: 22px;
-  }
-}
-.top .guide_sdominant::before {
+.top .guide_text.-sdominant::before {
   position: absolute;
   content: "";
   top: 50%;
@@ -892,18 +872,12 @@ main {
   opacity: 1;
   transform: translateY(-50%);
 }
-.top .guide_dominant {
+.top .guide_text.-dominant {
   margin-left: 20px;
   position: relative;
-  font-size: 12px;
   font-weight: bold;
 }
-@media screen and (min-width: 640px) {
-  .top .guide_dominant {
-    font-size: 22px;
-  }
-}
-.top .guide_dominant::before {
+.top .guide_text.-dominant::before {
   position: absolute;
   content: "";
   top: 50%;
@@ -922,7 +896,7 @@ main {
 }
 @media screen and (min-width: 1025px) {
   .top .focus {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     width: 100%;
     flex-grow: 1;
   }
@@ -933,11 +907,6 @@ main {
   margin-left: -6px;
   margin-bottom: -10px;
 }
-@media screen and (min-width: 1025px) {
-  .top .focus_title {
-    margin-top: -30px;
-  }
-}
 .top .focus_title span {
   background-color: #fff;
   position: relative;
@@ -946,14 +915,9 @@ main {
   padding: 0 10px;
   font-size: 22px;
 }
-@media screen and (min-width: 1025px) {
-  .top .focus_title span {
-    font-size: 40px;
-  }
-}
 .top .focus_key {
   margin-top: 20px;
-  font-size: 50px;
+  font-size: 40px;
   font-weight: bold;
   display: flex;
   justify-content: center;
@@ -967,6 +931,7 @@ main {
 @media screen and (min-width: 1025px) {
   .top .focus_key {
     margin-top: -20px;
+    padding-top: 30px;
   }
 }
 
@@ -1070,7 +1035,7 @@ main {
 }
 @media screen and (min-width: 1025px) {
   .bottom {
-    width: 100%;
+    width: 30%;
   }
 }
 .bottom .diatonic {
@@ -1080,15 +1045,11 @@ main {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  height: 100%;
 }
 .bottom .diatonic_default {
   margin-top: -6px;
   font-size: 16px;
-}
-@media screen and (min-width: 769px) {
-  .bottom .diatonic_default {
-    font-size: 24px;
-  }
 }
 .bottom .diatonic_title {
   font-weight: bold;
@@ -1096,11 +1057,6 @@ main {
   margin-left: -6px;
   margin-bottom: -10px;
   width: 100%;
-}
-@media screen and (min-width: 1025px) {
-  .bottom .diatonic_title {
-    margin-top: -30px;
-  }
 }
 .bottom .diatonic_title span {
   background-color: #fff;
@@ -1110,27 +1066,17 @@ main {
   padding: 0 10px;
   font-size: 22px;
 }
-@media screen and (min-width: 1025px) {
-  .bottom .diatonic_title span {
-    font-size: 40px;
-  }
-}
 .bottom .diatonic_content {
   display: flex;
   width: 100%;
 }
 .bottom .diatonic_chord_name {
   flex-grow: 1;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: bold;
 }
-@media screen and (min-width: 1025px) {
-  .bottom .diatonic_chord_name {
-    font-size: 22px;
-  }
-}
 .bottom .diatonic_attr {
-  padding: 10px 0;
+  padding: 8px 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1152,7 +1098,7 @@ main {
   padding-top: 20px;
 }
 .bottom .diatonic_chord {
-  padding: 10px 0;
+  padding: 8px 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1170,12 +1116,6 @@ main {
   font-weight: bold;
   border-left: 3px solid #393939;
   padding-left: 6px;
-}
-@media screen and (min-width: 1025px) {
-  .bottom .diatonic_sub {
-    font-size: 28px;
-    border-left: 3px solid #393939;
-  }
 }
 
 .footer {

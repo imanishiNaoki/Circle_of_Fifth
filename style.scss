@@ -53,10 +53,12 @@ a {
 main {
   display: flex;
   flex-direction: column;
+
   @include mq(lg) {
     flex-direction: row;
-    justify-content: space-between;
     flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
   }
 }
 
@@ -97,19 +99,13 @@ main {
     font-weight: bold;
     margin-top: -20px;
     margin-left: -6px;
-    @include mq(lg) {
-      margin-top: -30px;
-    }
     span {
       background-color: #fff;
       position: relative;
       z-index: 1001;
       display: inline-block;
-      padding: 0 10px;
+      padding: 0 10px 30px 10px;
       font-size: 22px;
-      @include mq(lg) {
-        font-size: 40px;
-      }
     }
   }
   width: calc(100vw - 72px);
@@ -772,7 +768,7 @@ main {
   align-items: stretch;
   padding-top: 30px;
   @include mq(lg) {
-    width: 48%;
+    width: 18%;
     flex-direction: column;
     justify-content: flex-start;
   }
@@ -793,9 +789,6 @@ main {
       font-weight: bold;
       margin-top: -20px;
       margin-left: -6px;
-      @include mq(lg) {
-        margin-top: -30px;
-      }
       span {
         background-color: #fff;
         position: relative;
@@ -803,79 +796,71 @@ main {
         display: inline-block;
         padding: 0 10px;
         font-size: 22px;
-        @include mq(lg) {
-          font-size: 40px;
+      }
+    }
+    &_text {
+      margin-left: 20px;
+      position: relative;
+      font-size: 12px;
+      font-weight: bold;
+      @include mq(lg) {
+        font-size: 16px;
+      }
+      &.-tonic {
+        margin-left: 20px;
+        position: relative;
+        font-weight: bold;
+        &::before {
+          position: absolute;
+          content: '';
+          top: 50%;
+          left: -18px;
+          width: 14px;
+          height: 14px;
+          background-color: $tonic;
+          opacity: 1;
+          transform: translateY(-50%);
         }
       }
-    }
-    &_tonic {
-      margin-left: 20px;
-      position: relative;
-      font-size: 12px;
-      font-weight: bold;
-      @include mq(sm) {
-        font-size: 22px;
-      }
-      &::before {
-        position: absolute;
-        content: '';
-        top: 50%;
-        left: -18px;
-        width: 14px;
-        height: 14px;
-        background-color: $tonic;
-        opacity: 1;
+      &.-sdominant {
+        margin-left: 20px;
+        position: relative;
+        font-weight: bold;
+        &::before {
+          position: absolute;
+          content: '';
+          top: 50%;
+          left: -18px;
+          width: 14px;
+          height: 14px;
+          background-color: $sdominant;
+          opacity: 1;
 
-        transform: translateY(-50%);
+          transform: translateY(-50%);
+        }
       }
-    }
-    &_sdominant {
-      margin-left: 20px;
-      position: relative;
-      font-size: 12px;
-      font-weight: bold;
-      @include mq(sm) {
-        font-size: 22px;
-      }
-      &::before {
-        position: absolute;
-        content: '';
-        top: 50%;
-        left: -18px;
-        width: 14px;
-        height: 14px;
-        background-color: $sdominant;
-        opacity: 1;
-
-        transform: translateY(-50%);
-      }
-    }
-    &_dominant {
-      margin-left: 20px;
-      position: relative;
-      font-size: 12px;
-      font-weight: bold;
-      @include mq(sm) {
-        font-size: 22px;
-      }
-      &::before {
-        position: absolute;
-        content: '';
-        top: 50%;
-        left: -18px;
-        width: 14px;
-        height: 14px;
-        background-color: $dominant;
-        opacity: 1;
-
-        transform: translateY(-50%);
+      &.-dominant {
+        margin-left: 20px;
+        position: relative;
+        font-weight: bold;
+        &::before {
+          position: absolute;
+          content: '';
+          top: 50%;
+          left: -18px;
+          width: 14px;
+          height: 14px;
+          background-color: $dominant;
+          opacity: 1;
+          transform: translateY(-50%);
+        }
       }
     }
   }
   .focus {
     width: 40%;
     @include mq(lg) {
-      margin-bottom: 40px;
+      margin-bottom: 20px;
       width: 100%;
       flex-grow: 1;
     }
@@ -887,9 +872,6 @@ main {
       margin-top: -20px;
       margin-left: -6px;
       margin-bottom: -10px;
-      @include mq(lg) {
-        margin-top: -30px;
-      }
       span {
         background-color: #fff;
         position: relative;
@@ -897,14 +879,11 @@ main {
         display: inline-block;
         padding: 0 10px;
         font-size: 22px;
-        @include mq(lg) {
-          font-size: 40px;
-        }
       }
     }
     &_key {
       margin-top: 20px;
-      font-size: 50px;
+      font-size: 40px;
       font-weight: bold;
       display: flex;
       justify-content: center;
@@ -914,6 +893,7 @@ main {
       }
       @include mq(lg) {
         margin-top: -20px;
+        padding-top: 30px;
       }
     }
   }
@@ -1016,8 +996,9 @@ main {
 }
 .bottom {
   margin-top: 30px;
+
   @include mq(lg) {
-    width: 100%;
+    width: 30%;
   }
   .diatonic {
     border: 1px solid $_m;
@@ -1026,12 +1007,10 @@ main {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    height: 100%;
     &_default {
       margin-top: -6px;
       font-size: 16px;
-      @include mq(md) {
-        font-size: 24px;
-      }
     }
     &_title {
       font-weight: bold;
@@ -1039,9 +1018,6 @@ main {
       margin-left: -6px;
       margin-bottom: -10px;
       width: 100%;
-      @include mq(lg) {
-        margin-top: -30px;
-      }
       span {
         background-color: #fff;
         position: relative;
@@ -1049,9 +1025,6 @@ main {
         display: inline-block;
         padding: 0 10px;
         font-size: 22px;
-        @include mq(lg) {
-          font-size: 40px;
-        }
       }
     }
     &_content {
@@ -1061,14 +1034,11 @@ main {
 
     &_chord_name {
       flex-grow: 1;
-      font-size: 11px;
+      font-size: 14px;
       font-weight: bold;
-      @include mq(lg) {
-        font-size: 22px;
-      }
     }
     &_attr {
-      padding: 10px 0;
+      padding: 8px 0;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -1090,7 +1060,7 @@ main {
       padding-top: 20px;
     }
     &_chord {
-      padding: 10px 0;
+      padding: 8px 0;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -1108,10 +1078,6 @@ main {
       font-weight: bold;
       border-left: 3px solid $_m;
       padding-left: 6px;
-      @include mq(lg) {
-        font-size: 28px;
-        border-left: 3px solid $_m;
-      }
     }
   }
 }
